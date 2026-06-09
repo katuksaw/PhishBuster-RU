@@ -1,19 +1,56 @@
+# PhishBuster RU — Структура rules.json
+
+## Общая структура
+
+```json
 {
   "version": "1.3.0",
   "lastUpdated": "2025-12-15",
   "author": "PhishBuster RU Team",
   "description": "База эталонных признаков легитимных сайтов для выявления фишинга",
+  "services": [
+    { "...сбербанк..." },
+    { "...госуслуги..." },
+    { "...вконтакте..." },
+    { "...яндекс..." },
+    { "...т-банк..." }
+  ]
+}
+```
+
+**Поля мета-информации**:
+| Поле | Назначение |
+|---|---|
+| `version` | Версия базы в формате SemVer — отслеживание обновлений |
+| `lastUpdated` | Дата последнего обновления — контроль актуальности |
+| `author` | Авторство — для демонстрации на защите |
+| `description` | Описание — документирование назначения файла |
+
+---
+
+## Полный пример rules.json
+
+```json
+{
+  "version": "1.3.0",
+  "lastUpdated": "2025-12-15",
+  "author": "PhishBuster RU Team",
+  "description": "База эталонных признаков легитимных сайтов для выявления фишинга",
+  
   "globalSettings": {
     "defaultThreshold": 60,
     "cacheTTL": 3600000,
-    "maxAnalysisTime": 3000
+    "maxAnalysisTime": 3000,
+    "versionCheckUrl": ""
   },
+
   "services": [
     {
       "id": "sberbank",
       "name": "Сбербанк",
       "category": "banking",
       "icon": "🏦",
+      
       "domains": {
         "legitimate": [
           "sberbank.ru",
@@ -35,6 +72,7 @@
           "[a-z0-9-]*sber[a-z0-9-]*\\.(tk|ml|ga|cf)"
         ]
       },
+
       "selectors": {
         "loginForms": [
           "form[action*='login']",
@@ -58,9 +96,12 @@
         ],
         "securityIndicators": [
           "[class*='secure']",
-          "[class*='protected']"
+          "[class*='protected']",
+          "img[alt*='SSL']",
+          "img[alt*='безопасн']"
         ]
       },
+
       "keywords": {
         "titleKeywords": [
           "Сбербанк",
@@ -86,23 +127,29 @@
           "подозрительная операция"
         ]
       },
+
       "weights": {
         "domainMatch": 40,
         "selectorMatch": 35,
         "keywordMatch": 25,
         "urgencySignals": 15
       },
+
       "threshold": 60,
+
       "meta": {
         "addedVersion": "1.0.0",
-        "lastVerified": "2025-12-01"
+        "lastVerified": "2025-12-01",
+        "verificationNotes": "Проверено на online.sberbank.ru"
       }
     },
+
     {
       "id": "gosuslugi",
       "name": "Госуслуги",
       "category": "government",
       "icon": "🏛️",
+      
       "domains": {
         "legitimate": [
           "gosuslugi.ru",
@@ -119,10 +166,12 @@
           "gosuslugi-[a-z0-9]+\\.",
           "gos-?[a-z0-9]+\\.(ru|com|net|org|info)",
           "gosuslugi\\.(online|site|xyz|top|club)",
+          "госуслуги\\.",
           "[a-z0-9-]*gosuslugi[a-z0-9-]*\\.(tk|ml|ga|cf)",
           "esia-[a-z0-9]+\\."
         ]
       },
+
       "selectors": {
         "loginForms": [
           "form[action*='login']",
@@ -149,6 +198,7 @@
           "[class*='protected']"
         ]
       },
+
       "keywords": {
         "titleKeywords": [
           "Госуслуги",
@@ -173,23 +223,29 @@
           "судебная задолженность"
         ]
       },
+
       "weights": {
         "domainMatch": 40,
         "selectorMatch": 35,
         "keywordMatch": 25,
         "urgencySignals": 15
       },
+
       "threshold": 60,
+
       "meta": {
         "addedVersion": "1.0.0",
-        "lastVerified": "2025-12-01"
+        "lastVerified": "2025-12-01",
+        "verificationNotes": "Проверено на esia.gosuslugi.ru"
       }
     },
+
     {
       "id": "vk",
       "name": "ВКонтакте",
       "category": "social",
       "icon": "💬",
+      
       "domains": {
         "legitimate": [
           "vk.com",
@@ -213,6 +269,7 @@
           "[a-z0-9-]*vk[a-z0-9-]*\\.(tk|ml|ga|cf)"
         ]
       },
+
       "selectors": {
         "loginForms": [
           "form[action*='login']",
@@ -229,6 +286,7 @@
           "img[alt*='VK']",
           "img[alt*='ВКонтакте']",
           "img[src*='vk_logo']",
+          "[class*='vk']",
           "[class*='header-logo']",
           "svg[class*='logo']"
         ],
@@ -238,6 +296,7 @@
           "[class*='confirm']"
         ]
       },
+
       "keywords": {
         "titleKeywords": [
           "ВКонтакте",
@@ -262,23 +321,29 @@
           "срочно войдите"
         ]
       },
+
       "weights": {
         "domainMatch": 40,
         "selectorMatch": 30,
         "keywordMatch": 25,
         "urgencySignals": 15
       },
+
       "threshold": 55,
+
       "meta": {
         "addedVersion": "1.1.0",
-        "lastVerified": "2025-12-05"
+        "lastVerified": "2025-12-05",
+        "verificationNotes": "Проверено на login.vk.com"
       }
     },
+
     {
       "id": "yandex",
       "name": "Яндекс",
       "category": "tech",
       "icon": "🔍",
+      
       "domains": {
         "legitimate": [
           "yandex.ru",
@@ -304,6 +369,7 @@
           "яндекс\\."
         ]
       },
+
       "selectors": {
         "loginForms": [
           "form[action*='passport']",
@@ -321,6 +387,7 @@
           "img[alt*='Яндекс']",
           "img[alt*='Yandex']",
           "img[src*='yandex']",
+          "[class*='yandex']",
           "[class*='header-logo']",
           "svg[class*='logo']"
         ],
@@ -330,6 +397,7 @@
           "[class*='protected']"
         ]
       },
+
       "keywords": {
         "titleKeywords": [
           "Яндекс",
@@ -355,27 +423,31 @@
           "изменение пароля"
         ]
       },
+
       "weights": {
         "domainMatch": 40,
         "selectorMatch": 35,
         "keywordMatch": 25,
         "urgencySignals": 15
       },
+
       "threshold": 60,
+
       "meta": {
         "addedVersion": "1.1.0",
-        "lastVerified": "2025-12-05"
+        "lastVerified": "2025-12-05",
+        "verificationNotes": "Проверено на passport.yandex.ru"
       }
     },
+
     {
       "id": "tbank",
       "name": "Т-Банк (Тинькофф)",
       "category": "banking",
       "icon": "💳",
+      
       "domains": {
         "legitimate": [
-          "tbank.ru",
-          "www.tbank.ru",
           "tinkoff.ru",
           "www.tinkoff.ru",
           "t-bank.ru",
@@ -386,7 +458,6 @@
         "patterns": [
           "tinkoff\\.ru$",
           "t-bank\\.ru$",
-          "tbank\\.ru$", 
           "^login\\.tinkoff",
           "^secure\\.tinkoff",
           "^www\\.tinkoff"
@@ -401,6 +472,7 @@
           "т-банк\\."
         ]
       },
+
       "selectors": {
         "loginForms": [
           "form[action*='login']",
@@ -417,6 +489,7 @@
           "img[alt*='Т-Банк']",
           "img[alt*='Tinkoff']",
           "img[src*='tinkoff']",
+          "[class*='tinkoff']",
           "[class*='header-logo']",
           "svg[class*='logo']"
         ],
@@ -427,6 +500,7 @@
           "[class*='confirm']"
         ]
       },
+
       "keywords": {
         "titleKeywords": [
           "Тинькофф",
@@ -453,17 +527,53 @@
           "кредит одобрен — подтвердите"
         ]
       },
+
       "weights": {
         "domainMatch": 40,
         "selectorMatch": 35,
         "keywordMatch": 25,
         "urgencySignals": 15
       },
+
       "threshold": 60,
+
       "meta": {
         "addedVersion": "1.2.0",
-        "lastVerified": "2025-12-10"
+        "lastVerified": "2025-12-10",
+        "verificationNotes": "Проверено на login.tinkoff.ru"
       }
     }
   ]
 }
+```
+
+---
+
+## Обоснование структуры данных
+
+### Почему веса именно такие?
+
+| Метрика | Вес | Обоснование |
+|---|---|---|
+| `domainMatch` | 40 | Домен — самый надёжный индикатор. Фишинг всегда использует подложный домен. Вес наибольший |
+| `selectorMatch` | 35 | Селекторы — второй по надёжности признак. Фишинговые сайты часто копируют HTML-структуру оригинала |
+| `keywordMatch` | 25 | Ключевые слова могут совпасть случайно. Вес ниже, но всё ещё значимый |
+| `urgencySignals` | 15 | Дополнительный бонус — фишинг часто использует «срочные» формулировки. Не основной, но усиливающий признак |
+
+> **Примечание**: Сумма весов трёх основных метрик (40+35+25 = 100) даёт максимальный базовый score. `urgencySignals` — это **бонус**, который может добавить до 15 баллов сверх, поднимая итоговый score максимум до **115** (что обрезается до 100). Это важно для **усиления обнаружения** страниц, которые похожи на фишинг, но не дотягивают до threshold по основным метрикам.
+
+### Почему threshold = 60?
+
+- Для одного метрики: максимум 40 баллов (domain) — **не достигает** 60 → False Positive минимален
+- Для двух метрик: 40 + 35 = 75 → **превышает** 60 → уверенное выявление
+- Для трёх метрик: 100 → максимальная уверенность
+
+Это означает: расширение сигнализирует о фишинге **только если совпали минимум две метрики**, что снижает количество ложных срабатываний.
+
+### Версионирование
+
+Формат `version` следует **SemVer** (Semantic Versioning):
+- **Major** (1.x.x): изменение структуры rules.json (backward-incompatible)
+- **Minor** (x.3.x): добавление нового сервиса
+- **Patch** (x.x.0): исправление существующих правил
+

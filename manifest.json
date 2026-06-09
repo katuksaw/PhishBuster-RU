@@ -2,17 +2,15 @@
   "manifest_version": 3,
   "name": "PhishBuster RU",
   "version": "1.0.0",
-  "description": "Гибридный детектор фишинга на основе локальных цифровых метрик",
-  "permissions": ["storage", "tabs", "activeTab"],
-  "host_permissions": ["<all_urls>"],
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "32": "assets/icon.png",
-      "48": "assets/icon.png",
-      "128": "assets/icon.png"
-    }
-  },
+  "description": "Браузерное расширение для выявления фишинговых сайтов на основе анализа цифровых метрик и локальной базы эталонов",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
     "service_worker": "background.js"
   },
@@ -22,5 +20,9 @@
       "js": ["content.js"],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "PhishBuster RU — Анализ безопасности"
+  }
 }
