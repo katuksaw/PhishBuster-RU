@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тинькофф — Личный кабинет [ТЕСТ PhishBuster]</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 420px; margin: 40px auto; padding: 20px; }
+        .test-banner { background: #FEF3C7; border: 2px solid #F59E0B; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; }
+        .bank-card { background: linear-gradient(135deg, #FFDD2D, #FFE066); padding: 24px; border-radius: 12px; }
+        .bank-card h2 { color: #333; margin-bottom: 16px; }
+        input { width: 100%; padding: 10px; margin: 6px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #333; color: #FFDD2D; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 8px; }
+        .alert { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 12px; margin-top: 16px; color: #991B1B; font-size: 14px; }
+        .watermark { position: fixed; bottom: 10px; right: 10px; background: #EF4444; color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="test-banner">⚠️ Учебная тестовая страница для PhishBuster RU. Не является реальным сайтом.</div>
+    <div class="bank-card">
+        <h2>Тинькофф — Личный кабинет</h2>
+        <p>Т-Банк: перевод, кредит, вклад, инвестиции</p>
+        <p>Вход в систему</p>
+        <form action="#" method="POST" class="auth">
+            <input type="text" name="login" placeholder="Логин или телефон">
+            <input type="password" name="password" placeholder="Пароль">
+            <button type="submit" class="sign-in">Войти</button>
+        </form>
+    </div>
+    <div class="alert">
+        Ваш счёт заблокирован! Подозрительная операция. Срочно подтвердите вход.
+    </div>
+    <div class="watermark">ТЕСТ PhishBuster</div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a08ddd6d59f41976',t:'MTc4MDk4NDI5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

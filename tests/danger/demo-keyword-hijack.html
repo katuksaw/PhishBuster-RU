@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Яндекс — Авторизация [ТЕСТ PhishBuster]</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; padding: 20px; }
+        .test-banner { background: #FEF3C7; border: 2px solid #F59E0B; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; }
+        .content { background: #f9f9f9; padding: 20px; border-radius: 8px; }
+        .content h2 { color: #FC3F1D; }
+        input { width: 100%; padding: 10px; margin: 6px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { padding: 10px 24px; background: #FC3F1D; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .watermark { position: fixed; bottom: 10px; right: 10px; background: #EF4444; color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="test-banner">⚠️ Учебная тестовая страница для PhishBuster RU.</div>
+    <div class="content">
+        <h2>Яндекс ID</h2>
+        <p>Войдите в аккаунт, чтобы получить доступ к Яндекс Паспорт</p>
+        <p>Почта, Диск, Маркет и другие сервисы</p>
+        <form action="#" method="POST" class="passp-form">
+            <input type="text" name="login" placeholder="Логин" id="passp-field-login">
+            <input type="password" name="passwd" placeholder="Пароль" id="passp-field-passwd">
+            <button type="submit">Войти</button>
+        </form>
+        <p style="color: #DC2626; margin-top: 12px;">Подозрительная активность. Срочно войдите и измените пароль!</p>
+    </div>
+    <div class="watermark">ТЕСТ PhishBuster</div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a08ddd81bfe21976',t:'MTc4MDk4NDI5NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
